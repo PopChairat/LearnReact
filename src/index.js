@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
-//สร้าง component แยก
-import HelloComponent from  './components/HelloComponent'
 
 //ทดลองสร้าง Component
+
+//สร้าง component แยก
+import HelloComponent from  './components/HelloComponent'
 
 //function component 
 function HellComponentFunc(){
