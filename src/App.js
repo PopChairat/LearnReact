@@ -7,10 +7,10 @@ const Title = () => <h1 style={headerStyle}>โปรแกรมบัญชี
 
 function App() {
   return (
-    <>
+    <div className="container">
       <Title />
       <Transaction />
-    </>
+    </div>
   );
 }
 
