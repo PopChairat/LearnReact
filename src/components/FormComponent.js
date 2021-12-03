@@ -1,11 +1,27 @@
+import { useState } from "react";
 import "./FormComponent.css";
 
 const FormComponent = () => {
-  const inputTitle = (e) => {};
-  const inputAmount = (e) => {};
+  //Title State
+  const [title, setTitle] = useState("");
+  //amount State
+  const [amount, setAmount] = useState(0);
+
+  const inputTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const inputAmount = (e) => {
+    setAmount(e.target.value);
+  };
   const saveItem = (e) => {
     //don't clear value (จะไม่ refresh หน้า)
     e.preventDefault();
+    const itemData = {
+      title,
+      amount: Number(amount),
+    };
+    setTitle("");
+    setAmount(0);
   };
   return (
     <div>
@@ -16,6 +32,7 @@ const FormComponent = () => {
             type="text"
             placeholder="ระบุชื่อรายการ"
             onChange={inputTitle}
+            value={title}
           />
         </div>
         <div className="form-control">
@@ -24,6 +41,7 @@ const FormComponent = () => {
             type="number"
             placeholder="(+ รายรับ, - รายจ่าย) บาท"
             onChange={inputAmount}
+            value={amount}
           />
         </div>
         <div>
