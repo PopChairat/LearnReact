@@ -1,10 +1,21 @@
 import Item from "./Item";
 import './Transaction.css'
 const Transaction = () => {
+  const data=[
+    {title:"เงินเดือน", amount:50000},
+    {title:"น้ำมัน", amount:3000},
+    {title:"เช่าบ้าน", amount:4000},
+    {title:"ประกัน", amount:600}
+  ]
+
+      //map item
   return (
     <ul className="item-list">
-      <Item  title="ค่ารักษา" amount="2000"/>
-      <Item  title="เงินเดือน" amount="50000"/>
+      {
+            data.map((element)=>{
+                return <Item title={element.title}  amount={element.amount}/>
+            })
+      }
     </ul>
   );
 };

@@ -1,9 +1,12 @@
 
-const Item = (props) => {
+// const Item = (props) => {
+// const {title, amount} = props
 
+//Destructuring
+const Item = ({title, amount}) => {
   //output to display html
   return (
-  <li>{props.title}<span>{props.amount}</span> </li>
+  <li>{title}<span>{amount}</span> </li>
   )
 }
 
