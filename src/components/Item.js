@@ -1,6 +1,10 @@
 const Item = () => {
+
+const name = "some thing"
+const amount = 5000
+  //output to display html
   return (
-  <li> ค่าเดินทาง <span>-200</span> </li>
+  <li> {name}<span>{amount}</span> </li>
   )
 }
 
