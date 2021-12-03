@@ -2,11 +2,11 @@ import Item from "./Item";
 import './Transaction.css'
 const Transaction = () => {
   const data=[
-    {title:"เงินเดือน", amount:50000},
-    {title:"น้ำมัน", amount:3000},
-    {title:"เช่าบ้าน", amount:4000},
-    {title:"ประกัน", amount:600},
-    {title:"อื่นๆ", amount:300},
+    {id:1 ,title:"เงินเดือน", amount:50000},
+    {id:2, title:"น้ำมัน", amount:3000},
+    {id:3,title:"เช่าบ้าน", amount:4000},
+    {id:4,title:"ประกัน", amount:600},
+    {id:5,title:"อื่นๆ", amount:300},
   ]
 
       //map item
@@ -15,7 +15,7 @@ const Transaction = () => {
     <ul className="item-list">
       {
             data.map((element)=>{
-                return <Item {...element}/>
+                return <Item key={element.id} {...element}/>
             })
       }
     </ul>
