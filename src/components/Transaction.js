@@ -10,7 +10,7 @@ const Transaction = () => {
     {title:"ประกัน", amount:600},
     {title:"อื่นๆ", amount:300},
   ]
-
+  
       //map item
       //ถ้าชื่อ Props เหมือนกัน ย่อรูปได้
   return (
