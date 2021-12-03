@@ -3,10 +3,8 @@ import './Transaction.css'
 const Transaction = () => {
   return (
     <ul className="item-list">
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      <Item  title="ค่ารักษา" amount="2000"/>
+      <Item  title="เงินเดือน" amount="50000"/>
     </ul>
   );
 };
