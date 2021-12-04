@@ -23,9 +23,9 @@ function App() {
   const reducer = (state, action) => {
     switch (action.type) {
       case "ADD":
-        return state + 1;
+        return state + action.payload;
       case "REMOVE":
-        return state - 1;
+        return state - action.payload;
       case "RESET":
         return 0;
     }
@@ -36,8 +36,12 @@ function App() {
   return (
     <div align="center">
       <h1>{result}</h1>
-      <button onClick={() => dispatch({ type: "ADD" })}>Add</button>
-      <button onClick={() => dispatch({ type: "REMOVE" })}>Remove</button>
+      <button onClick={() => dispatch({ type: "ADD", payload: 10 })}>
+        Add
+      </button>
+      <button onClick={() => dispatch({ type: "REMOVE", payload: 5 })}>
+        Remove
+      </button>
       <button onClick={() => dispatch({ type: "RESET" })}>Reset</button>
     </div>
     // <div className="container">
