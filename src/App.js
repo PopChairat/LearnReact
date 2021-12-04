@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import "./App.css";
 import Transaction from "./components/Transaction";
 import FormComponent from "./components/FormComponent";
@@ -17,12 +17,34 @@ function App() {
       return [newItem, ...previousDataArr];
     });
   };
+
+  //============== Reducer ==============//
+  const [count, setCount] = useState(0);
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "ADD":
+        return state + 1;
+      case "REMOVE":
+        return state - 1;
+      case "RESET":
+        return 0;
+    }
+  };
+  //dispatch เป็นบอกว่าให้เป็น Action แบบไหน (ADD  or REMOVE or RESET)
+  const [result, dispatch] = useReducer(reducer, count);
+  //============== End Reducer ==============//
   return (
-    <div className="container">
-      <Title />
-      <FormComponent onAddItem={onAddNewItem} />
-      <Transaction items={items} />
+    <div align="center">
+      <h1>{result}</h1>
+      <button onClick={() => dispatch({ type: "ADD" })}>Add</button>
+      <button onClick={() => dispatch({ type: "REMOVE" })}>Remove</button>
+      <button onClick={() => dispatch({ type: "RESET" })}>Reset</button>
     </div>
+    // <div className="container">
+    //   <Title />
+    //   <FormComponent onAddItem={onAddNewItem} />
+    //   <Transaction items={items} />
+    // </div>
   );
 }
 
