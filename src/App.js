@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import Transaction from "./components/Transaction";
 import FormComponent from "./components/FormComponent";
-import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
 const headerStyle = { color: "red", textAlign: "center", fontSize: "1.5rem" };
