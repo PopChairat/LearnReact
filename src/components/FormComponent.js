@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./FormComponent.css";
+import { v4 as uuidv4 } from "uuid";
 
-const FormComponent = () => {
+const FormComponent = (props) => {
   //Title State
   const [title, setTitle] = useState("");
   //amount State
@@ -17,9 +18,15 @@ const FormComponent = () => {
     //don't clear value (จะไม่ refresh หน้า)
     e.preventDefault();
     const itemData = {
+      //====== Add uuid ====== //
+      id: uuidv4(),
       title,
       amount: Number(amount),
     };
+
+    //update data back to app.js
+    props.onAddItem(itemData);
+
     setTitle("");
     setAmount(0);
   };
