@@ -30,7 +30,7 @@ function App() {
         return 0;
     }
   };
-  //dispatch เป็นบอกว่าให้เป็น Action แบบไหน (ADD  or REMOVE or RESET)
+  //dispatch เป็นตัวบอกว่า ให้เป็น Action แบบไหน (ADD  or REMOVE or RESET)
   const [result, dispatch] = useReducer(reducer, count);
   //============== End Reducer ==============//
   return (
