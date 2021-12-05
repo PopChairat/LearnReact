@@ -1,18 +1,14 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import './index.css';
-// import App from './App';
-// import reportWebVitals from './reportWebVitals';
-
-// ReactDOM.render(<App/>, document.getElementById('root'));
-
-//Redux Section
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
 const initState = {
   salary: 50000,
   valueArr: [],
 };
-const userReducer = (state = { name: "", age: 0 }, action) => {
+const userReducer = (state = { name: "Pop", age: 0 }, action) => {
   switch (action.type) {
     case "setName":
       state = {
@@ -55,7 +51,7 @@ const logManagement = (store) => (next) => (action) => {
 };
 //Store
 const store = createStore(
-  combineReducers({ employeeReducer, userReducer }),
+  combineReducers({ emp: employeeReducer, user: userReducer }),
   {},
   applyMiddleware(logManagement)
 );
@@ -63,12 +59,10 @@ const store = createStore(
 store.subscribe(() => {
   console.log("update Store:", store.getState());
 });
-//Change value in state
-store.dispatch({
-  type: "ADD",
-  payload: 1500,
-});
-store.dispatch({
-  type: "setName",
-  payload: "Hello",
-});
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
