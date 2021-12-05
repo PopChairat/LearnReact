@@ -18,9 +18,9 @@ const store = createStore(
 );
 //============
 
+//#Step3: Map store to App
 ReactDOM.render(
   <React.StrictMode>
-    //#Step3: Map store to App
     <Provider store={store}>
       <App />
     </Provider>
