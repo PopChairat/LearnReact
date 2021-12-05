@@ -7,12 +7,29 @@
 // ReactDOM.render(<App/>, document.getElementById('root'));
 
 //Redux Section
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 const initState = {
   salary: 50000,
   valueArr: [],
 };
-const reducer = (state = initState, action) => {
+const userReducer = (state = { name: "", age: 0 }, action) => {
+  switch (action.type) {
+    case "setName":
+      state = {
+        name: action.payload,
+      };
+      break;
+    case "setAge":
+      state = {
+        age: action.payload,
+      };
+      break;
+    default:
+      break;
+  }
+  return state;
+};
+const employeeReducer = (state = initState, action) => {
   switch (action.type) {
     case "ADD":
       state = {
@@ -32,7 +49,7 @@ const reducer = (state = initState, action) => {
   return state;
 };
 //Store
-const store = createStore(reducer);
+const store = createStore(combineReducers({ employeeReducer, userReducer }));
 //Listen state
 store.subscribe(() => {
   console.log("update Store:", store.getState());
@@ -43,10 +60,6 @@ store.dispatch({
   payload: 1500,
 });
 store.dispatch({
-  type: "ADD",
-  payload: 600,
-});
-store.dispatch({
-  type: "ADD",
-  payload: 300,
+  type: "setName",
+  payload: "Hello",
 });
