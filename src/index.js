@@ -8,13 +8,23 @@
 
 //Redux Section
 import { createStore } from "redux";
-const reducer = (state, action) => {
+const initState = {
+  salary: 50000,
+  valueArr: [],
+};
+const reducer = (state = initState, action) => {
   switch (action.type) {
     case "ADD":
-      state += action.payload;
+      state = {
+        salary: (state.salary += action.payload),
+        valueArr: [...state.valueArr, action.payload],
+      };
       break;
     case "SUBTRACT":
-      state -= action.payload;
+      state = {
+        salary: (state.salary -= action.payload),
+        valueArr: [...state.valueArr, action.payload],
+      };
       break;
     default:
       break;
@@ -22,7 +32,7 @@ const reducer = (state, action) => {
   return state;
 };
 //Store
-const store = createStore(reducer, 50000);
+const store = createStore(reducer);
 //Listen state
 store.subscribe(() => {
   console.log("update Store:", store.getState());
@@ -33,6 +43,10 @@ store.dispatch({
   payload: 1500,
 });
 store.dispatch({
-  type: "SUBTRACT",
-  payload: 500,
+  type: "ADD",
+  payload: 600,
+});
+store.dispatch({
+  type: "ADD",
+  payload: 300,
 });
