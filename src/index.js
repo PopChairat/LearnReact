@@ -7,7 +7,7 @@
 // ReactDOM.render(<App/>, document.getElementById('root'));
 
 //Redux Section
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 const initState = {
   salary: 50000,
   valueArr: [],
@@ -48,8 +48,17 @@ const employeeReducer = (state = initState, action) => {
   }
   return state;
 };
+const logManagement = (store) => (next) => (action) => {
+  //เก็บ action ที่เราทำงาน
+  console.log("Log action", action);
+  next(action);
+};
 //Store
-const store = createStore(combineReducers({ employeeReducer, userReducer }));
+const store = createStore(
+  combineReducers({ employeeReducer, userReducer }),
+  {},
+  applyMiddleware(logManagement)
+);
 //Listen state
 store.subscribe(() => {
   console.log("update Store:", store.getState());
