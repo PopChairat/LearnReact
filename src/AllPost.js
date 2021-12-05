@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Post from "./Post";
+import EditComponent from "./EditComponent";
 //เอาทุก post มาแสดง (posts)
 class AllPost extends Component {
   render() {
@@ -9,7 +10,13 @@ class AllPost extends Component {
       <div>
         <h1>All Post</h1>
         {this.props.posts.map((post) => (
-          <Post key={post.id} post={post} />
+          <div key={post.id}>
+            {post.editing ? (
+              <EditComponent post={post} key={post.id} />
+            ) : (
+              <Post key={post.id} post={post} />
+            )}
+          </div>
         ))}
       </div>
     );
