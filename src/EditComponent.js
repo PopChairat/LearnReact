@@ -19,8 +19,8 @@ class EditComponent extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleEdit}>
+      <div className="post">
+        <form className="form" onSubmit={this.handleEdit}>
           <input
             type="text"
             ref={(input) => (this.getTitle = input)}

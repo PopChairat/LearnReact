@@ -31,9 +31,9 @@ class PostForm extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Creat Post</h1>
-        <form onSubmit={this.handleSubmit}>
+      <div className="post-container">
+        <h1 className="post_heading">Creat Post</h1>
+        <form className="form" onSubmit={this.handleSubmit}>
           <input
             type="text"
             ref={(input) => (this.getTitle = input)}
